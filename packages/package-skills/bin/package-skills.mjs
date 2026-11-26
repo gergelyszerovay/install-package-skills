@@ -100,7 +100,7 @@ const SKILL_NAME = /^[A-Za-z0-9][A-Za-z0-9._-]*$/;
 /** Quotes a name from a file the agent can write, so a control character never reaches the terminal raw. */
 const shown = (text) => JSON.stringify(String(text));
 
-const USAGE = `Usage: package-skills [--check] [--link] [--force] [--root <dir>]
+const USAGE = `Usage: install-package-skills [--check] [--link] [--force] [--root <dir>]
 Installs the skills of the packages the root package.json lists in devSkills: an array of package names
 (every skill of each), or an object of package names to "*", a list of skills, or { "exclude": [...] }.
 `;

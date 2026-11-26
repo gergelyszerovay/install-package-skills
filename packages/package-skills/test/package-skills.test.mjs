@@ -2010,17 +2010,19 @@ test('a target holding .install-skills.json is read and rewritten as .package-sk
   }
 });
 
-test('the bin is package-skills, and its usage and messages name devSkills', () => {
+test('the bin is install-package-skills, package-skills is its second name, and its usage and messages name devSkills', () => {
   const manifest = JSON.parse(
     readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'package.json'), 'utf8'),
   );
-  assert.equal(manifest.name, 'package-skills');
-  assert.deepEqual(Object.keys(manifest.bin), ['package-skills']);
+  assert.equal(manifest.name, 'install-package-skills');
+  assert.deepEqual(Object.keys(manifest.bin), ['install-package-skills', 'package-skills']);
+  assert.equal(manifest.bin['install-package-skills'], 'bin/package-skills.mjs');
   assert.equal(manifest.bin['package-skills'], 'bin/package-skills.mjs');
+  assert.equal(manifest.releaseTools.npmName, 'install-package-skills');
 
   const help = run(process.cwd(), ['--help']);
   assert.equal(help.status, 0);
-  assert.match(help.stdout, /^Usage: package-skills \[--check\]/);
+  assert.match(help.stdout, /^Usage: install-package-skills \[--check\]/);
   assert.match(help.stdout, /devSkills/);
   const unknown = run(process.cwd(), ['--nope']);
   assert.equal(unknown.status, 2);

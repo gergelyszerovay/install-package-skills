@@ -1,7 +1,7 @@
 {
   "name": "package-skills",
   "private": true,
-  "description": "The public copy of the package-skills release group, version 0.9.2.",
+  "description": "The public copy of the package-skills release group, version 0.9.3.",
   "scripts": {
     "build": "pnpm -r --if-present run build",
     "typecheck": "pnpm -r --if-present run typecheck",

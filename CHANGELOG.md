@@ -4,6 +4,14 @@ Release notes of the package-skills group, one section per release, generated fr
 
 ## Unreleased
 
+## 0.9.3
+
+### Changed
+
+- **package-skills: On npm the package is `install-package-skills`, and so is its command.** Install it with
+  `npm i -D install-package-skills` and run `install-package-skills`; `package-skills` stays as a second name of the
+  same command, so existing scripts keep working.
+
 ## 0.9.2
 
 ### Changed

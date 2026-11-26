@@ -1,17 +1,17 @@
-# package-skills
+# install-package-skills
 
 Install the agent skills that your npm dependencies ship into your repository, where Claude Code, Codex and other
 coding agents find them. You choose the packages, and optionally the skills of each, in a `devSkills` list in your
-root `package.json`. Plain Node 20 or later, no dependencies, one command: `package-skills`.
+root `package.json`. Plain Node 20 or later, no dependencies, one command: `install-package-skills`.
 
 Some packages ship skills: instructions that teach an agent how to use the package. Agents don't look for them in
-`node_modules`, only in `.claude/skills/` and `.agents/skills/`. `package-skills` copies the skills you list there,
+`node_modules`, only in `.claude/skills/` and `.agents/skills/`. `install-package-skills` copies the skills you list there,
 updates them when you upgrade a package, and removes them when you take them off the list.
 
 ## Quick start
 
 ```sh
-pnpm add -D package-skills @acme/agent-skills     # or npm i -D …
+pnpm add -D install-package-skills @acme/agent-skills     # or npm i -D …
 ```
 
 Add the list to the root `package.json`, and run the installer from a script so every install refreshes the skills:
@@ -19,25 +19,25 @@ Add the list to the root `package.json`, and run the installer from a script so 
 ```json
 {
   "scripts": {
-    "prepare": "package-skills"
+    "prepare": "install-package-skills"
   },
   "devSkills": ["@acme/agent-skills"]
 }
 ```
 
 ```sh
-pnpm exec package-skills            # copies the skills into .claude/skills/ and .agents/skills/
-pnpm exec package-skills --check    # reports what a run would change and writes nothing
+pnpm exec install-package-skills            # copies the skills into .claude/skills/ and .agents/skills/
+pnpm exec install-package-skills --check    # reports what a run would change and writes nothing
 ```
 
 The installed skills are not committed: each skills folder gets a generated `.gitignore` that lists exactly the
-skills `package-skills` installed, so Git ignores those and still tracks every skill of your own. Running the
+skills `install-package-skills` installed, so Git ignores those and still tracks every skill of your own. Running the
 command from `prepare` installs them again on every `pnpm install` or `npm install`.
 
 ## The `devSkills` list
 
 `devSkills` names the skills your repository's agents use while developing it, as `devDependencies` name the tools
-you use while developing. It is required: without it `package-skills` installs nothing, lists the declared
+you use while developing. It is required: without it `install-package-skills` installs nothing, lists the declared
 packages that ship skills, and exits 1. So a new dependency, or an upgrade, never adds instructions for your agents
 without a change to this list.
 
@@ -84,8 +84,10 @@ Rules:
 ## The command
 
 ```sh
-package-skills [--check] [--link] [--force] [--root <dir>]
+install-package-skills [--check] [--link] [--force] [--root <dir>]
 ```
+
+`package-skills` is the same command under its earlier name, so existing scripts keep working.
 
 | Option         | Does                                                                                                     |
 | -------------- | -------------------------------------------------------------------------------------------------------- |
@@ -121,7 +123,7 @@ Each target folder gets two generated files:
   It is how a later run knows what to refresh or remove, and which copies were edited by hand.
 - `.gitignore`, listing the record, itself and one line per skill installed there, and nothing else.
 
-Anything in those folders that `package-skills` did not install (your own skills, ones `npx skills add` installed)
+Anything in those folders that `install-package-skills` did not install (your own skills, ones `npx skills add` installed)
 is never touched: a skill of the same name is reported instead.
 
 ## Shipping skills in a package
