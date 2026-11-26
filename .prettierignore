@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+pnpm-lock.yaml
+temp/
+# The person's notes
+.notes/
+.claude/skills/
+.agents/skills/

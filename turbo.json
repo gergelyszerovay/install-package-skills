@@ -1,0 +1,16 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalPassThroughEnv": ["TMPDIR"],
+  "tasks": {
+    "test": {
+      "inputs": ["$TURBO_DEFAULT$", "!**/.notes/**"]
+    },
+    "format:check": {
+      "dependsOn": [],
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/.prettierrc.json", "!**/.notes/**"]
+    },
+    "publint": {
+      "inputs": ["$TURBO_DEFAULT$", "!**/.notes/**"]
+    }
+  }
+}

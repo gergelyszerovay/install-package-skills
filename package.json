@@ -1,0 +1,29 @@
+{
+  "name": "package-skills",
+  "private": true,
+  "description": "The public copy of the package-skills release group, version 0.9.2.",
+  "scripts": {
+    "build": "pnpm -r --if-present run build",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "lint": "pnpm -r --if-present run lint",
+    "test": "pnpm -r --if-present run test"
+  },
+  "devDependencies": {
+    "@gergelyszerovay/architecture-skills": "^0.8.2",
+    "markdown-schema": "^0.13.8",
+    "lint-staged": "^17.6.1",
+    "prettier": "^3.10.1",
+    "turbo": "^2.11.13"
+  },
+  "packageManager": "pnpm@12.11.2+sha512.25a51652a196785af5f28bda6dfe8dc582ebefa4ac1d180221ce1390231c5fb76637822ea4b6e4633ce74acdcb0a77f725af11bad38177fdeddaee818a955cb9",
+  "engines": {
+    "node": ">=24"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.21.0",
+      "onFail": "error"
+    }
+  }
+}
